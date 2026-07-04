@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Barista Virtual</title>
+        <link rel="stylesheet" href="static/style.css">
+        <link rel="icon" type="image/png" href="static/icone-500.png">
+
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+        <style>
+
+        </style>
+
+    </head>
+    <body>
+        <div class="app-shell">
+
+            <!-- nav bar / sidebar -->
+            <aside class="sidebar">
+                <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+
+                <div class="sidebar-topbar">
+                    <div class="sidebar-brand">
+                        <img src="static/Barista_Virtual_675.png" alt="Barista Virtual">
+                    </div>
+                    <label for="nav-toggle" class="nav-toggle-btn" aria-label="Abrir menu">
+                        <span></span><span></span><span></span>
+                    </label>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <span class="nav-eyebrow">Painel</span>
+                    <a class="nav-link active" href="#tabela-dever">Tarefas de casa</a>
+                    <a class="nav-link" href="#tabela-avisos">Quadro de avisos</a>
+                    <a class="nav-link" href="#cronograma">Cronograma</a>
+                    <a class="nav-link" href="#horario">Horário</a>
+
+                    <span class="nav-eyebrow">Acesso</span>
+                    <a href="login.html">
+                        <button class="btn-contribuidor">Sou contribuidor</button>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- main content -->
+            <main class="main-content">
+                <header class="page-header">
+                    <span class="eyebrow">Barista Virtual</span>
+                    <h1>Painel da turma</h1>
+                    <p>Tarefas, avisos e cronograma em um só lugar.</p>
+                </header>
+
+                <div class="dashboard-grid">
+
+                    <!-- Deveres de casa -->
+                    <section class="card span-tarefas" id="tarefas">
+                        <div class="card-header">
+                            <h2>Tarefas de Casa</h2>
+                            <span class="card-tag">Prazos</span>
+                        </div>
+                        <div id="tabela-dever">
+                            <p>Carregando...</p>
+                        </div>
+                    </section>
+
+                    <!-- Quadro de avisos -->
+                    <section class="card span-avisos" id="avisos">
+                        <div class="card-header">
+                            <h2>Quadro de avisos</h2>
+                            <span class="card-tag">Turma</span>
+                        </div>
+                        <div id="tabela-avisos">
+                            <p>Carregando...</p>
+                        </div>
+                    </section>
+
+                    <!-- Cronograma mensal-->
+                    <section class="card span-cronograma" id="cronograma">
+                        <div class="card-header">
+                            <h2>Cronograma</h2>
+                            <span class="card-tag">Google Agenda</span>
+                        </div>
+                        <!-- API Agenda google-->
+                        <div class="iframe-wrap">
+                            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FSao_Paulo&showPrint=0&showTabs=0&showNav=0&showTitle=0&showCalendars=0&showTz=0&src=M2RjYzNjNWI2ZWVlYmUyZjJlMDI2OWEyM2NiYmQ2NGEwNmExMWMwMzMwYWM0YmI1YWZlNDJlNjJiNTcyNjgwZUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23e4c441" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                    </section>
+
+                    <!-- Horário das aulas-->
+                    <section class="card span-horario" id="horario">
+                        <div class="card-header">
+                            <h2>Horário</h2>
+                            <span class="card-tag">Semana</span>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <tr>
+                                    <th>Seg</th>
+                                    <th>Ter</th>
+                                    <th>Qua</th>
+                                    <th>Qui</th>
+                                    <th>Sex</th>
+                                </tr>
+                                <tr>
+                                    <td>Português</td>
+                                    <td>Biologia</td>
+                                    <td>Ed. Física</td>
+                                    <td>Arte</td>
+                                    <td>Literatura</td>
+                                </tr>
+                                <tr>
+                                    <td>Geografia</td>
+                                    <td>Matemática</td>
+                                    <td>Literatura</td>
+                                    <td>Inglês</td>
+                                    <td>Filosofia</td>
+                                </tr>
+                                <tr>
+                                    <td>Geografia</td>
+                                    <td>Português</td>
+                                    <td>Matemática</td>
+                                    <td>Química</td>
+                                    <td>Biologia</td>
+                                </tr>
+                                <tr>
+                                    <td>P. Vida</td>
+                                    <td>Física</td>
+                                    <td>Matemática</td>
+                                    <td>Sociologia</td>
+                                    <td>Biologia</td>
+                                </tr>
+                                <tr>
+                                    <td>Física</td>
+                                    <td>Química</td>
+                                    <td>História</td>
+                                    <td>P. Texto</td>
+                                    <td>Matemática</td>
+                                </tr>
+                                <tr>
+                                    <td>Física</td>
+                                    <td>Química</td>
+                                    <td>História</td>
+                                    <td>P. Texto</td>
+                                    <td>Matemática</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </section>
+
+                </div>
+            </main>
+        </div>
+
+        <script src="js/supabase.js"></script>
+        <script src="js/session.js"></script>
+        <script src="js/tarefas.js"></script>
+        <script src="js/avisos.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
