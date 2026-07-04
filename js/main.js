@@ -7,9 +7,6 @@ async function redirecionar_admin(params) {
 redirecionar_admin()
 
 window.onload = async function() {
-    console.log('Página carregada! Captando dados...')
-    
-
     carregar_tarefas()
     carregar_avisos()
 

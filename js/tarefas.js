@@ -84,7 +84,6 @@ async function carregar_tarefas() {
     const tarefas = resposta.data
     const error = resposta.error
 
-    console.log('Dados que vieram do Supabase:', tarefas)
 
     if (error) {
         console.error('Erro ao buscar dados:', error)
