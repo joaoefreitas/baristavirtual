@@ -17,6 +17,6 @@ async function carregar_avisos() {
         </div>
     `).join('')
 
-    console.log('Tabela de avisos:', tabela)
+
 
 }
