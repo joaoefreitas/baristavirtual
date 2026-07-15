@@ -1,93 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin — Barista Virtual</title>
-    <link rel="stylesheet" href="static/style.css">
-    <link rel="icon" type="image/png" href="static/icone-500.png">
+    <link rel="stylesheet" href="static/style.css" />
+    <link rel="icon" type="image/png" href="static/icone-500.png" />
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="app-shell">
+      <aside class="sidebar">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox" />
 
-        <aside class="sidebar">
-            <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+        <div class="sidebar-topbar">
+          <div class="sidebar-brand">
+            <img src="static/Barista_Virtual_675.png" alt="Barista Virtual" />
+          </div>
+          <label
+            for="nav-toggle"
+            class="nav-toggle-btn"
+            aria-label="Abrir menu"
+          >
+            <span></span><span></span><span></span>
+          </label>
+        </div>
 
-            <div class="sidebar-topbar">
-                <div class="sidebar-brand">
-                    <img src="static/Barista_Virtual_675.png" alt="Barista Virtual">
-                </div>
-                <label for="nav-toggle" class="nav-toggle-btn" aria-label="Abrir menu">
-                    <span></span><span></span><span></span>
-                </label>
+        <nav class="sidebar-nav">
+          <span class="nav-eyebrow">Administração</span>
+          <a class="nav-link active" href="#gerir-tarefas">Tarefas</a>
+          <a class="nav-link" href="#gerir-avisos">Avisos</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <button class="btn-logout" onclick="logout()">Sair</button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="page-header">
+          <span class="eyebrow">Área do contribuidor</span>
+          <h1>Administrar conteúdo</h1>
+          <p>Adicione e remova tarefas e avisos da turma.</p>
+        </header>
+
+        <div class="dashboard-grid">
+          <!-- administrar tarefas-->
+          <section class="card span-admin-tarefas" id="gerir-tarefas">
+            <div class="card-header">
+              <h2>Administrar Tarefas</h2>
+              <span class="card-tag">Deveres</span>
             </div>
 
-            <nav class="sidebar-nav">
-                <span class="nav-eyebrow">Administração</span>
-                <a class="nav-link active" href="#gerir-tarefas">Tarefas</a>
-                <a class="nav-link" href="#gerir-avisos">Avisos</a>
-            </nav>
-
-            <div class="sidebar-footer">
-                <button class="btn-logout" onclick="logout()">Sair</button>
+            <div id="lista-tarefas" class="admin-list">
+              <p>Carregando...</p>
             </div>
-        </aside>
 
-        <main class="main-content">
-            <header class="page-header">
-                <span class="eyebrow">Área do contribuidor</span>
-                <h1>Administrar conteúdo</h1>
-                <p>Adicione e remova tarefas e avisos da turma.</p>
-            </header>
+            <hr class="form-divider" />
 
-            <div class="dashboard-grid">
+            <form id="form-tarefas">
+              <input
+                type="text"
+                id="materia"
+                placeholder="Matéria"
+                autocomplete="off"
+              />
+              <input
+                type="text"
+                id="descricao_tarefa"
+                placeholder="Detalhes"
+                autocomplete="off"
+              />
+              <input type="date" id="tarefa_data" placeholder="Prazo" />
+              <button type="submit">Adicionar</button>
+            </form>
+          </section>
 
-                <!-- administrar tarefas-->
-                <section class="card span-admin-tarefas" id="gerir-tarefas">
-                    <div class="card-header">
-                        <h2>Administrar Tarefas</h2>
-                        <span class="card-tag">Deveres</span>
-                    </div>
-
-                    <div id="lista-tarefas" class="admin-list">
-                        <p>Carregando...</p>
-                    </div>
-
-                    <hr class="form-divider">
-
-                    <form id="form-tarefas">
-                        <input type="text" id="materia" placeholder="Matéria" autocomplete="off">
-                        <input type="text" id="descricao_tarefa" placeholder="Detalhes" autocomplete="off">
-                        <input type="date" id="tarefa_data" placeholder="Prazo">
-                        <button type="submit">Adicionar</button>
-                    </form>
-                </section>
-
-                <!-- administrar avisos-->
-                <section class="card span-admin-avisos" id="gerir-avisos">
-                    <div class="card-header">
-                        <h2>Administrar Avisos</h2>
-                        <span class="card-tag">Quadro</span>
-                    </div>
-
-                    <div id="lista-avisos" class="admin-list">
-                        <p>Carregando...</p>
-                    </div>
-
-                    <hr class="form-divider">
-
-                    <form id="form-avisos">
-                        <input type="text" id="titulo" placeholder="Título" autocomplete="off">
-                        <textarea id="descricao_aviso" placeholder="Descrição" rows="4" autocomplete="off"></textarea>
-                        <input type="date" id="expira" autocomplete="off">
-                        <button type="submit">Adicionar</button>
-                    </form>
-                </section>
-
+          <!-- administrar avisos-->
+          <section class="card span-admin-avisos" id="gerir-avisos">
+            <div class="card-header">
+              <h2>Administrar Avisos</h2>
+              <span class="card-tag">Quadro</span>
             </div>
-        </main>
+
+            <div id="lista-avisos" class="admin-list">
+              <p>Carregando...</p>
+            </div>
+
+            <hr class="form-divider" />
+
+            <form id="form-avisos">
+              <input
+                type="text"
+                id="titulo"
+                placeholder="Título"
+                autocomplete="off"
+              />
+              <textarea
+                id="descricao_aviso"
+                placeholder="Descrição"
+                rows="4"
+                autocomplete="off"
+              ></textarea>
+              <input type="date" id="expira" autocomplete="off" />
+              <button type="submit">Adicionar</button>
+            </form>
+          </section>
+        </div>
+      </main>
     </div>
 
     <script src="js/supabase.js"></script>
@@ -96,5 +117,5 @@
     <script src="js/admin_tarefas.js"></script>
     <script src="js/admin_avisos.js"></script>
     <script src="js/admin.js"></script>
-</body>
+  </body>
 </html>

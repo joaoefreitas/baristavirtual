@@ -1,33 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login — Barista Virtual</title>
-    <link rel="stylesheet" href="static/style.css">
-    <link rel="icon" type="image/png" href="static/icone-500.png">
+    <link rel="stylesheet" href="static/style.css" />
+    <link rel="icon" type="image/png" href="static/icone-500.png" />
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="login-shell">
-        <div class="login-card">
-            <div class="login-brand">
-                <img src="static/Barista_Virtual_675.png" alt="Barista Virtual">
-            </div>
-            <h1>Área do contribuidor</h1>
-            <p class="login-subtitle">Entre com sua matrícula e senha</p>
-
-            <form id="form-login">
-                <input type="text" id="matricula" placeholder="Matrícula" autocomplete="off">
-                <input type="password" id="senha" placeholder="Senha">
-                <button type="submit">Login</button>
-                <p id="resultado-login"></p>
-            </form>
+      <div class="login-card">
+        <div class="login-brand">
+          <img src="static/Barista_Virtual_675.png" alt="Barista Virtual" />
         </div>
+        <h1>Área do contribuidor</h1>
+        <p class="login-subtitle">Entre com sua matrícula e senha</p>
+
+        <form id="form-login">
+          <input
+            type="text"
+            id="matricula"
+            placeholder="Matrícula"
+            autocomplete="off"
+          />
+          <input type="password" id="senha" placeholder="Senha" />
+          <button type="submit">Login</button>
+          <p id="resultado-login"></p>
+        </form>
+      </div>
     </div>
 
     <script src="js/supabase.js"></script>
     <script src="js/login.js"></script>
-</body>
+  </body>
 </html>
