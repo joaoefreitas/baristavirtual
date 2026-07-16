@@ -9,13 +9,19 @@ async function carregar_avisos() {
   }
 
   tabela = document.getElementById("tabela-avisos");
+
+  console.log(avisos);
+  if (avisos.length === 0 || !avisos) {
+    tabela.innerHTML = "<p>Não há avisos postados</p>";
+    return;
+  }
   tabela.innerHTML = avisos
     .map(
       (aviso) => `
-        <div>
-            <h2>${aviso.titulo}</h2>
-            <p>${aviso.descricao}</p>
-        </div>
+    <div>
+    <h2>${aviso.titulo}</h2>
+    <p>${aviso.descricao}</p>
+    </div>
     `,
     )
     .join("");

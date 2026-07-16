@@ -84,7 +84,7 @@ function renderizarTarefas(tarefas) {
     renderizarGrupo(nome, grupos[nome]),
   ).join("");
   document.getElementById("tabela-dever").innerHTML =
-    html || "<p>Nenhuma tarefa neste período.</p>";
+    html || "<p>Nenhuma tarefa pelos próximos 30 dias</p>";
 }
 
 async function carregar_tarefas() {
